@@ -5,33 +5,27 @@
     </section>
 </section>
 
-<hr>
+    <div class="container-fluid mb-4 row row-cols-1 row-cols-md-3 g-4 mt-2">
+        {{#each dados}} <!--Cada dado, mutiplicando a quantidade de produtos-->
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{dataValues.nome_do_plano}}</h5>
+                    <p class="card-text m-0">ID: {{dataValues.id}}</p>
+                    <p class="card-text m-0">Preço: {{dataValues.preco}}</p>
+                    <p class="card-text m-0">Descrição: {{dataValues.descricao}}</p>
+                </div>
 
-<section class="my-4">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each dados}}
-            <tr>
-                <td>{{dataValues.id}}</td>
-                <td>{{dataValues.nome_do_plano}}</td>
-                <td>{{dataValues.descricao}}</td>
-                <td>{{dataValues.preco}}</td>
-                <td>
-                    <a href="" class="btn btn-danger" 
+                <div class="card-footer text-body-secondary">
+                  <a href="" class="btn btn-danger" 
                     data-bs-toggle="modal" 
                     data-bs-target="#modal{{dataValues.id}}">Excluir</a>
-                </td>
-            </tr>
-            {{>modalDelete2 idItem=dataValues.id}}
-            {{/each}}
-        </tbody>
-    </table>
-</section>
+                </div>
+            </div>
+        </div>
+          {{>modalDelete2 idItem=dataValues.id}}
+        {{else}}
+        <p>Nenhum plano cadastrado ainda.</p> 
+
+        {{/each}}
+    </div>
